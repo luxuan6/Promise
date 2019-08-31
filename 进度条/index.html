@@ -32,15 +32,19 @@
       let count = 0;
       let imgArr = ['./image/img1.jpg','./image/img2.jpg','./image/img3.jpg','./image/img4.jpg','./image/img5.jpg','./image/img6.jpg','./image/img7.jpg','./image/img8.jpg','./image/img9.jpg','./image/img10.jpg'];
       let num = 100/imgArr.length;
-      imgArr.forEach((item,index)=>{
-          createImage(item).then((res,t)=>{
-              setTimeout(()=>{
-                  count++;
-                  child.style.width = count*num + '%'
-                  box.innerHTML +=` <img src=${res} />`
+      imgArr.map((item,index)=>{
+        setTimeout(()=>{
+            createImage(item).then((res,t)=>{
+                    console.log(item)
+                    count++;
+                    console.log(count)
+                    child.style.width = count*num + '%'
+                    box.innerHTML +=` <img src=${res} />`
+            
+                })  
               },1000)
-              
-          })
+       
+
       })
     </script>
 </body>
