@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="box">
+            <!-- <img src="./image/img1.jpg" alt=""> -->
+        </div>
+        <div class="child" id="child"></div>
+       
+
+    </div>
+    <script src="./js/index.js"></script>
+    <script>
+        function createImage(src) {
+        return new MyPromise((resolve, reject) => {
+            let Img = document.createElement('img')
+            Img.src = src;
+            Img.onload = function(){
+                resolve(src)
+            }
+        });
+    } 
+      // let BoxImage = document.getElementById('BoxImage');
+      var box = document.querySelector('.box');
+      let count = 0;
+      let imgArr = ['./image/img1.jpg','./image/img2.jpg','./image/img3.jpg','./image/img4.jpg','./image/img5.jpg','./image/img6.jpg','./image/img7.jpg','./image/img8.jpg','./image/img9.jpg','./image/img10.jpg'];
+      let num = 100/imgArr.length;
+      imgArr.forEach((item,index)=>{
+          createImage(item).then((res,t)=>{
+              setTimeout(()=>{
+                  count++;
+                  child.style.width = count*num + '%'
+                  box.innerHTML +=` <img src=${res} />`
+              },1000)
+              
+          })
+      })
+    </script>
+</body>
+</html>
